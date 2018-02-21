@@ -1,0 +1,30 @@
+CREATE TABLE public.lemma
+(
+    id bigint NOT NULL DEFAULT nextval('lemma_id_seq'::regclass),
+    doc_id bigint,
+    text text COLLATE pg_catalog."default",
+    amount bigint,
+    tf_idf double precision,
+    CONSTRAINT lemma_pkey PRIMARY KEY (id)
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.lemma
+    OWNER to postgres;
+
+CREATE TABLE public.documents
+(
+    id bigint,
+    data character varying COLLATE pg_catalog."default",
+    url character varying COLLATE pg_catalog."default"
+)
+WITH (
+    OIDS = FALSE
+)
+TABLESPACE pg_default;
+
+ALTER TABLE public.documents
+    OWNER to postgres;
